@@ -1,0 +1,14 @@
+# Eridan workspace
+alias erdws='cd ~/workspace/erdu_fhlp/; ls'
+alias petalinux2019.1='source ~/petalinux/2019.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias petalinux2020.1='source ~/petalinux/2020.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias petalinux2021.1='source ~/petalinux/2021.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias sdk_microblze='unset LD_LIBRARY_PATH && source /tools/Xilinx/toolchain/environment-setup-microblazeel-v11.0-bs-cmp-re-mh-div-xilinx-linux'
+alias sdk_arm64='unset LD_LIBRARY_PATH && source /tools/Xilinx/arm64_toolchain/environment-setup-microblazeel-v11.0-bs-cmp-re-mh-div-xilinx-linux'
+alias vcu118_swdir='cd ~/workspace/vcu118/initial_vcu118/packages/SW'
+alias vcu118_prj='cd ~/workspace/vcu118/initial_vcu118/packages/SW/firmware/vcu118/vcu118_base.prj'
+alias vbssw='cd ~/workspace/vbs/'
+alias vbs_prj='cd ~/workspace/vbs/sw/firmware/vbs/vbs_base.prj'
+alias garuda_swdir='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packages/SW'
+alias garuda_prj='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packages/SW/firmware/zu11eg/recovery.prj'
+
