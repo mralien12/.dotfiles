@@ -1,7 +1,9 @@
 # Eridan workspace
+alias ws='cd ~/workspace/; ls'
 alias erdws='cd ~/workspace/erdu_fhlp/; ls'
-alias petalinux_v2020.1='source /home/trankhanh.hoa/petalinux/2020.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
-alias petalinux_v2021.1='source /home/trankhanh.hoa/petalinux/2021.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias vbsws='cd ~/workspace/vbs/; ls'
+alias peta2020.1='source /home/trankhanh.hoa/petalinux/2020.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias peta2021.1='source /home/trankhanh.hoa/petalinux/2021.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
 alias sdk_v2020.1_microblze='unset LD_LIBRARY_PATH && source ~/tool/xilinx_sdk/environment-setup-microblazeel-v11.0-bs-cmp-re-mh-div-xilinx-linux'
 alias vcu118_swdir='cd ~/workspace/vcu118/initial_vcu118/packages/SW'
 alias vcu118_prj='cd ~/workspace/vcu118/initial_vcu118/packages/SW/firmware/vcu118/vcu118_base.prj'

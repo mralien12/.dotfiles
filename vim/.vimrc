@@ -40,11 +40,14 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'tpope/vim-commentary'
 
 " File system explorer for Vim editor
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " A Git wrapper so awesome
 " Plugin 'tpope/vim-fugitive'
+
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Required, plugins available after
 call vundle#end()		" required
@@ -88,7 +91,7 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 "-----------------------------------------------------------------------"
 " Set up cscope for vim
-source ~/.vim/bundle/cscope/cscope_maps.vim
+" source ~/.vim/bundle/cscope/cscope_maps.vim
 
 " Customize tab key in commandline mode as bash shell
 set wildmode=longest,list

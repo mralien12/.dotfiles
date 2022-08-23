@@ -1,6 +1,9 @@
 ### Environment Variables ####
 PATH=$PATH:~/tools/bin/
+# Default options for fuzzy finder
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border --color=bg+:#3B4252,fg+:#f7f603'
+# Setting up PS1 value
+export PS1="[\u@\h \[\e[32m\]\W \[\e[91m\]\$(parse_git_branch)\[\e[00m\]]$ "
 
 ### Common Alias ###
 alias recipes_kernel='petalinuxtop; cd project-spec/meta-user/recipes-kernel/linux'
@@ -18,12 +21,16 @@ alias lsa='ls -alht --color=auto' # in case of mistyping
 # remove newline character and copy to system clipboard
 # usage example: pwd | c
 alias c="tr -d '\n' | xclip -selection clipboard" 
-alias v='xclip -o -selection clipboard' # paste from system clipboard
+alias v='vim'
 alias brc='vim ~/.bashrc'
 alias bal='vim ~/.bash_aliases'
 
 ### Function ###
-petalinuxtop() {
+petagethw() {
+	petalinux-config --get-hw-description=$1
+}
+
+petatop() {
         local is_in_petalinux=0
         local current_dir=$(pwd)
         while true
@@ -63,6 +70,8 @@ tm() {
 	fi
 	session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
+
+parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
 
 
 #### Aliases for each machine ###
