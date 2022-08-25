@@ -86,8 +86,8 @@ nnoremap <silent> ]B :blast<CR>
 " inoremap ( ()<left>
 " inoremap [ []<left>
 " inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
 
 "-----------------------------------------------------------------------"
 " Set up cscope for vim

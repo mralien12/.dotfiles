@@ -3,18 +3,18 @@ PATH=$PATH:~/tools/bin/
 # Default options for fuzzy finder
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border --color=bg+:#3B4252,fg+:#f7f603'
 # Setting up PS1 value
-export PS1="[\u@\h \[\e[32m\]\W \[\e[91m\]\$(parse_git_branch)\[\e[00m\]]$ "
+export PS1="[\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]]\n> "
 
 ### Common Alias ###
-alias recipes_kernel='petalinuxtop; cd project-spec/meta-user/recipes-kernel/linux'
-alias recipes_apps='petalinuxtop; cd project-spec/meta-user/recipes-apps'
-alias recipes_dt='petalinuxtop; cd project-spec/meta-user/recipes-bsp/device-tree/files'
-alias recipes_uboot='petalinuxtop; cd project-spec/meta-user/recipes-bsp/u-boot'
-alias recipes_fsboot='petalinuxtop; cd project-spec/meta-user/recipes-bsp/fs-boot'
+alias recipes_kernel='petatop; cd project-spec/meta-user/recipes-kernel/linux'
+alias recipes_apps='petatop; cd project-spec/meta-user/recipes-apps'
+alias recipes_dt='petatop; cd project-spec/meta-user/recipes-bsp/device-tree/files'
+alias recipes_uboot='petatop; cd project-spec/meta-user/recipes-bsp/u-boot'
+alias recipes_fsboot='petatop; cd project-spec/meta-user/recipes-bsp/fs-boot'
 
-alias view_pl_dts='petalinuxtop; vim components/plnx_workspace/device-tree/device-tree/'
-alias view_system_dts='petalinuxtop; vim project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi'
-alias cpimage='petalinuxtop; cp images/linux/BOOT.BIN images/linux/boot.scr images/linux/image.ub ~/.; cd - > /dev/null'
+alias view_pl_dts='petatop; vim components/plnx_workspace/device-tree/device-tree/'
+alias view_system_dts='petatop; vim project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi'
+alias cpimage='petatop; cp images/linux/BOOT.BIN images/linux/boot.scr images/linux/image.ub ~/.; cd - > /dev/null'
 
 alias sl='ls' # in case of mistyping
 alias lsa='ls -alht --color=auto' # in case of mistyping
@@ -24,6 +24,7 @@ alias c="tr -d '\n' | xclip -selection clipboard"
 alias v='vim'
 alias brc='vim ~/.bashrc'
 alias bal='vim ~/.bash_aliases'
+alias gitroot="cd \"$(git rev-parse --show-toplevel)\""
 
 ### Function ###
 petagethw() {
@@ -73,7 +74,78 @@ tm() {
 
 parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
 
+# fcd - cd to selected directory including hidden directories
+fcd() {
+	local dir
+	dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
 
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() {
+	IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+	key=$(head -1 <<< "$out")
+	file=$(head -2 <<< "$out" | tail -1)
+	if [ -n "$file" ]; then
+		[ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+	fi
+}
+
+# Open recent file in .viminfo
+foh() {
+	local file
+	file=$(grep '^>' ~/.viminfo|cut -c3-|sed 's,~,'$HOME',' | \
+		fzf --header=$'Recent files\n\n') && ${EDITOR:-vim} "$file"
+	
+}
+
+# fgst - pick files from `git status -s` 
+is_in_git_repo() {
+	git rev-parse HEAD > /dev/null 2>&1
+}
+
+# Git diff modified file
+fgd() {
+	# "Nothing to see here, move along"
+	is_in_git_repo || return
+
+	local fd=$(git status -s . | fzf -m)
+	[ "$fd" == "" ] && return
+	git diff $(echo "$fd" | sed "s/.* //")
+}
+
+# Git add
+fga() {
+	# "Nothing to see here, move along"
+	is_in_git_repo || return
+
+	local fd=$(git status -s . | fzf -m)
+	[ "$fd" == "" ] && return
+	git add $(echo "$fd" | sed "s/.* //")
+}
+
+# fco - checkout git branch/tag
+fgc() {
+	# "Nothing to see here, move along"
+	is_in_git_repo || return
+
+	local tags branches target
+	branches=$(
+		git --no-pager branch --all \
+			--format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
+		| sed '/^$/d') || return
+	tags=$(
+		git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+	target=$(
+		(echo "$branches"; echo "$tags") |
+		fzf --no-hscroll --no-multi -n 2 \
+			--ansi) || return
+	git checkout $(awk '{print $2}' <<<"$target" )
+}
+
+#### Forgit ###
+[ -f ~/.forgit/forgit.sh ] && source ~/.forgit/forgit.sh
 #### Aliases for each machine ###
 hostname=$(cat /etc/hostname)
 # Add aliases for VVDN Server 172.16.237.159
