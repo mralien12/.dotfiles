@@ -1,0 +1,21 @@
+$include /etc/inputrc
+
+set completion-ignore-case on
+set completion-query-items 10
+set print-completions-horizontally on
+
+set completion-map-case on
+
+set show-all-if-ambiguous on
+
+
+#set completion-prefix-display-length 3
+
+#"\C-i": menu-complete
+
+#set colored-stats on
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+#"\ex": 'cd !$ \015ls\015'

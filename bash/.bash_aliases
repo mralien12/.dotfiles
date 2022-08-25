@@ -24,7 +24,7 @@ alias c="tr -d '\n' | xclip -selection clipboard"
 alias v='vim'
 alias brc='vim ~/.bashrc'
 alias bal='vim ~/.bash_aliases'
-alias gitroot="cd \"$(git rev-parse --show-toplevel)\""
+alias dotfile='cd ~/.dotfiles'
 
 ### Function ###
 petagethw() {
@@ -142,6 +142,13 @@ fgc() {
 		fzf --no-hscroll --no-multi -n 2 \
 			--ansi) || return
 	git checkout $(awk '{print $2}' <<<"$target" )
+}
+
+gitroot() {
+	local dir
+	is_in_git_repo || return
+	dir=$(git rev-parse --show-toplevel)
+	cd $dir
 }
 
 #### Forgit ###
