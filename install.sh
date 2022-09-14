@@ -1,3 +1,5 @@
+#!/bin/bash
+
 current_dir=$(pwd)
 
 echo "Unlink dot file..."
@@ -9,7 +11,7 @@ unlink ~/.tmux.conf.local
 unlink ~/.vimrc
 echo "Unlink dot file done!"
 
-if [ "$1" == "clean" ] ; then
+if [ "$1" = "clean" ] ; then
 	exit 0
 fi
 
