@@ -12,7 +12,7 @@ alias recipes_dt='petatop; cd project-spec/meta-user/recipes-bsp/device-tree/fil
 alias recipes_uboot='petatop; cd project-spec/meta-user/recipes-bsp/u-boot'
 alias recipes_fsboot='petatop; cd project-spec/meta-user/recipes-bsp/fs-boot'
 
-alias view_pl_dts='petatop; vim components/plnx_workspace/device-tree/device-tree/'
+alias view_pl_dts='petatop; vim components/plnx_workspace/device-tree/device-tree/pl.dtsi'
 alias view_system_dts='petatop; vim project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi'
 alias cpimage='petatop; cp images/linux/BOOT.BIN images/linux/boot.scr images/linux/image.ub ~/.; cd - > /dev/null'
 
