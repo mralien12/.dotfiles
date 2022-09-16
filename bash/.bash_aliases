@@ -1,5 +1,5 @@
 ### Environment Variables ####
-PATH=$PATH:~/tools/bin/
+PATH=$PATH:~/tools/bin
 # Default options for fuzzy finder
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border --color=bg+:#3B4252,fg+:#f7f603'
 # Setting up PS1 value
@@ -155,8 +155,8 @@ gitroot() {
 [ -f ~/.forgit/forgit.sh ] && source ~/.forgit/forgit.sh
 #### Aliases for each machine ###
 hostname=$(cat /etc/hostname)
-# Add aliases for VVDN Server 172.16.237.159
-if [ "$hostname" == "vvdnadmin" ]; then
+# Add aliases for VVDN Server 172.16.237.159/vvdnhn
+if [ "$hostname" = "vvdnadmin" ] | [ "$hostname" = "vvdnhn" ]; then
 	if [ -f ~/.bash_aliases_others/server159/bash_aliases ]; then
 		. ~/.bash_aliases_others/server159/bash_aliases
 	fi
