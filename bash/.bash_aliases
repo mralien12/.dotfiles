@@ -22,6 +22,7 @@ alias lsa='ls -alht --color=auto' # in case of mistyping
 # usage example: pwd | c
 alias c="tr -d '\n' | xclip -selection clipboard" 
 alias v='vim'
+alias fc='fzf | c'
 alias brc='vim ~/.bashrc'
 alias bal='vim ~/.bash_aliases'
 alias dotfile='cd ~/.dotfiles'
