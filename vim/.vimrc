@@ -91,7 +91,7 @@ nnoremap <silent> ]B :blast<CR>
 
 "-----------------------------------------------------------------------"
 " Set up cscope for vim
-" source ~/.vim/bundle/cscope/cscope_maps.vim
+source ~/.cscope_maps.vim
 
 " Customize tab key in commandline mode as bash shell
 set wildmode=longest,list
