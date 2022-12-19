@@ -11,4 +11,7 @@ alias vcu118_swdir='cd ~/workspace/vcu118/initial_vcu118/packages/SW'
 alias vcu118_prj='cd ~/workspace/vcu118/initial_vcu118/packages/SW/firmware/vcu118/vcu118_base.prj'
 alias garuda_swdir='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packages/SW'
 alias garuda_prj='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packages/SW/firmware/zu11eg/recovery.prj'
-
+alias sce_prj='cd ~/workspace/smallcell/hfci_scel'
+alias cdrcw='sce_prj; cd flexbuild/packages/firmware/rcw/'
+alias cdlinux='sce_prj; cd flexbuild/packages/linux/linux/'
+alias cdatf='sce_prj; cd flexbuild/packages/firmware/atf/'

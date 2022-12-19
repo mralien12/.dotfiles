@@ -157,7 +157,7 @@ gitroot() {
 #### Aliases for each machine ###
 hostname=$(cat /etc/hostname)
 # Add aliases for VVDN Server 172.16.237.159/vvdnhn
-if [ "$hostname" = "vvdnadmin" ] | [ "$hostname" = "vvdnhn" ]; then
+if [ "$hostname" = "vvdnadmin" ] || [ "$hostname" = "vvdnhn" ]; then
 	if [ -f ~/.bash_aliases_others/server159/bash_aliases ]; then
 		. ~/.bash_aliases_others/server159/bash_aliases
 	fi
