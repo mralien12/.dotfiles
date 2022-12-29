@@ -105,3 +105,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Make NerdTree looks nice and disable 'Press ? for help'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+
+" CtrlP setup"
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'a'
