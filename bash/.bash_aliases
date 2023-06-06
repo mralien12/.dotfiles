@@ -1,5 +1,8 @@
 ### Environment Variables ####
-PATH=$PATH:~/tools/bin
+PATH=$HOME/tools/bin:$HOME/local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+export MANPATH=$HOME/local/share/man:$MANPATH
+
 # Default options for fuzzy finder
 export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border --color=bg+:#3B4252,fg+:#f7f603'
 # Setting up PS1 value
@@ -167,6 +170,12 @@ fi
 if [ "$hostname" == "hoa-VirtualBox" ]; then
 	if [ -f ~/.bash_aliases_others/local_virtualbox/bash_aliases ]; then
 		. ~/.bash_aliases_others/local_virtualbox/bash_aliases
+	fi
+fi
+# Add aliases for HN server
+if [ "$hostname" == "vvdnhn-PowerEdge-T440" ]; then
+	if [ -f ~/.bash_aliases_others/hnserver/bash_aliases ]; then
+		. ~/.bash_aliases_others/hnserver/bash_aliases
 	fi
 fi
 # Add aliases for HN server
