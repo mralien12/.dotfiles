@@ -1,0 +1,5 @@
+alias peta2022.2='source /install/petalinux/2022_2/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin:$PETALINUX/components/yocto/buildtools/sysroots/x86_64-petalinux-linux/usr/bin'
+alias sdk_zynqmp_2022.2='unset LD_LIBRARY_PATH && source ~/install/xilinx/sdk/zynqmp/2022.2/environment-setup-cortexa72-cortexa53-xilinx-linux'
+alias ws='cd ~/workspace/; ls'
+# Aliase for wifi project
+alias wf.prj='cd ~/workspace/wifi/plnx_prj/uetc_11ax/zynqmp-mpsoc'

@@ -178,9 +178,9 @@ if [ "$hostname" == "vvdnhn-PowerEdge-T440" ]; then
 		. ~/.bash_aliases_others/hnserver/bash_aliases
 	fi
 fi
-# Add aliases for HN server
-if [ "$hostname" == "vvdnhn-PowerEdge-T440" ]; then
-	if [ -f ~/.bash_aliases_others/hnserver/bash_aliases ]; then
-		. ~/.bash_aliases_others/hnserver/bash_aliases
+# Add aliases for sw-build-01
+if [ "$hostname" == "sw-build-01" ]; then
+	if [ -f ~/.bash_aliases_others/sw_build_01/bash_aliases ]; then
+		. ~/.bash_aliases_others/sw_build_01/bash_aliases
 	fi
 fi
