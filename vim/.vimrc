@@ -89,6 +89,10 @@ nnoremap <silent> ]B :blast<CR>
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
 
+" write with sudo access
+" command W w !sudo tee % > /dev/null
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 "-----------------------------------------------------------------------"
 " Set up cscope for vim
 source ~/.cscope_maps.vim

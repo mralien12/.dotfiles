@@ -10,10 +10,11 @@ export PS1="[\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]]\n> "
 
 ### Common Alias ###
 alias recipes_kernel='petatop; cd project-spec/meta-user/recipes-kernel/linux'
-alias recipes_apps='petatop; cd project-spec/meta-user/recipes-apps'
+alias recipes_apps='petatop; cd project-spec/meta-user/recipes-apps/apps/'
 alias recipes_dt='petatop; cd project-spec/meta-user/recipes-bsp/device-tree/files'
 alias recipes_uboot='petatop; cd project-spec/meta-user/recipes-bsp/u-boot'
 alias recipes_fsboot='petatop; cd project-spec/meta-user/recipes-bsp/fs-boot'
+alias recipes_modules='petatop; cd project-spec/meta-user/recipes-modules/kernel-driver'
 
 alias view_pl_dts='petatop; vim components/plnx_workspace/device-tree/device-tree/pl.dtsi'
 alias view_system_dts='petatop; vim project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi'

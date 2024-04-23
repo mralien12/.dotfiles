@@ -5,10 +5,6 @@ current_dir=$(pwd)
 
 ### Install vim plugins
 install_vim() {
-	if [ -f ~/.vimrc ]; then
-		unlink ~/.vimrc
-		unlink ~/.cscope_maps.vim
-	fi
 	ln -sfv $current_dir/vim/.vimrc ~/.vimrc
 	ln -sfv $current_dir/vim/.cscope_maps.vim  ~/.cscope_maps.vim
 	if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
@@ -17,6 +13,17 @@ install_vim() {
 	else
 		echo "[INFO] Vim plugin is already installed"
 	fi
+}
+
+clean_vim() {
+	unlink ~/.vimrc
+	unlink ~/.cscope_maps.vim
+}
+
+clean_tmux() {
+	unlink ~/.tmux.conf
+	unlink ~/.tmux.conf.local
+	unlink ~/.tmux
 }
 
 ### Instal fzf
@@ -30,15 +37,22 @@ install_fzf() {
 	fi
 }
 
+install_tmux_tpm() {
+	mkdir -p $current_dir/tmux/plugins/
+	if [ ! -d $current_dir/tmux/plugins/tpm ]; then
+		git clone https://github.com/tmux-plugins/tpm $current_dir/tmux/plugins/tpm
+	fi
+}
+
 ### Unlink
-do_unlink() {
+do_clean() {
 	echo "[INFO] Unlink dot file..."
 	unlink ~/.bash_aliases
 	unlink ~/.forgit
 	unlink ~/.bash_aliases_others
-	unlink ~/.tmux.conf
-	unlink ~/.tmux.conf.local
 	unlink ~/.inputrc
+	clean_tmux
+	clean_vim
 	echo "[INFO] Unlink dot file done!"
 }
 
@@ -51,6 +65,7 @@ do_link() {
 	ln -sfv $current_dir/tmux/.tmux.conf ~/.tmux.conf
 	ln -sfv $current_dir/tmux/.tmux.conf.local ~/.tmux.conf.local
 	ln -sfv $current_dir/inputrc/.inputrc ~/.inputrc
+	ln -sv $current_dir/tmux/ ~/.tmux
 	echo "[INFO] Create soft link for dotfile done!"
 }
 
@@ -60,6 +75,7 @@ usage() {
 	--all		Install all
 	--vim		Install vim
 	--fzf		Install fzf
+	--clean		Clean existing setup
 	--help		Print this help
 	\n"
 	exit 0
@@ -67,14 +83,7 @@ usage() {
 
 
 ### Start
-if [ "$1" = "clean" ] ; then
-	do_unlink
-	exit 0
-elif [ "$1" = "--help" ]; then
-	usage
-fi
-
-do_unlink
+do_clean
 do_link
 
 for opt in $@; do
@@ -82,6 +91,12 @@ for opt in $@; do
 	--all)
 		install_vim
 		install_fzf
+		install_tmux_tpm
+		shift
+		;;
+	--clean)
+		do_unlink
+		clean_vim
 		shift
 		;;
 	--vim)
