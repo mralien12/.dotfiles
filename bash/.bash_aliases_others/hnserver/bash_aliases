@@ -12,6 +12,6 @@ alias garuda_swdir='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packa
 alias garuda_prj='cd ~/workspace/garuda/spiu_fhce-initial_garuda_release/packages/SW/firmware/zu11eg/recovery.prj'
 alias sce_prj='cd ~/workspace/smallcell/hfci_scel'
 # Aliase for wifi project
-alias wf.sw='cd ~/workspace/wifi/plnx_prj/vvdn_lpru_wifi/packages/SW'
-alias wf.prj='wf.sw && cd firmware/zu11eg/wifi.prj'
 alias wf.home='cd ~/workspace/wifi'
+alias wf.prj='wf.home && cd plnx_prj/x530_21dr/uetc_11ax'
+alias wf.tmpwork='cd /hdd4t/trankhanh.hoa/plnx-workspace/2022.2/x530_21dr/tmp/work'
