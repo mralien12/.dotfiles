@@ -1,6 +1,7 @@
 alias peta2020.1='source /home/hoang.tung/petalinux-v2020.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
 alias peta2021.1='source /home/hoang.tung/petalinux-v2021.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
 alias peta2022.2='source /home/hoang.tung/petalinux-v2022.2/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
+alias peta2023.1='source /hdd4t/tools/PetaLinux/2023.1/settings.sh; export PATH=$PATH:$PETALINUX/tools/xsct/bin'
 alias sdk_v2020.1_microblze='unset LD_LIBRARY_PATH && source ~/tools/ub_toolchain/environment-setup-microblazeel-v10.0-bs-cmp-re-mh-div-xilinx-linux'
 alias sdk_arm64='unset LD_LIBRARY_PATH && source ~/tools/aarch64_toolchain/environment-setup-cortexa72-cortexa53-xilinx-linux'
 alias ws='cd ~/workspace/; ls'
